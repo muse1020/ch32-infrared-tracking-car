@@ -10,17 +10,28 @@
 
 | 文件 | 内容 |
 |------|------|
-| `project/user/src/main.c` | 主程序：传感器读取 → 误差计算 → 差速电机控制 |
-| `project/user/inc/infrared_tracking.h` | 寻迹模块数据结构设计（已定义，待实现） |
+| `project/user/src/main.c` | 全部逻辑：初始化 + 寻迹控制循环 |
+| `project/user/inc/infrared_tracking.h` | 寻迹模块数据结构设计 |
 
-核心算法就一个 while 循环：
+main.c 代码结构：
 
 ```
-读 5 路红外 → 查表得 error → 左电机 = BASE + error×KP, 右电机 = BASE - error×KP
-丢线时保持上次方向继续走
+motor_init()       → PWM + GPIO 方向引脚初始化
+ir_sensor_init()   → 5 路红外传感器初始化（上拉输入）
+ir_get_error()     → 读传感器，查误差映射表，返回偏离值
+main() while 循环  → error → 差速计算 → PWM 输出
 ```
 
-调参：`KP=60`, `BASE_SPEED=3000`, PWM 满量程 10000。右电机 +160 补偿硬件差异。
+误差映射（5 路传感器从左到右）：
+
+```
+传感器:  CH1(远左)  CH2(左)  CH3(中)  CH4(右)  CH5(远右)
+误差:      -4        -2        0       +2        +4
+```
+
+偏离越远误差越大，转弯越急。丢线时保持上次方向。
+
+调参：`KP=30`, `BASE_SPEED=3000`, PWM 满量程 10000。右电机 `+RIGHT_MOTOR_COMP(160)` 补偿硬件差异。
 
 ## 硬件接线
 
