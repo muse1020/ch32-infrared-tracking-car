@@ -1,0 +1,13 @@
+# Build outputs
+project/mrs/obj/
+
+# MounRiver Studio workspace & local settings
+project/mrs/.mrs/
+project/mrs/.settings/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.bat
