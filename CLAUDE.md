@@ -57,7 +57,7 @@ The line-tracking algorithm in `main.c`:
 3. Compute differential motor speed: `left = BASE + error*KP`, `right = BASE - error*KP`
 4. Apply via PWM on TIM5 channels (A1=left, A3=right) + GPIO direction pins (A5/A7=left, C5/B1=right)
 
-Current tuning constants: `KP=60`, `BASE_SPEED=3000`, `PWM_DUTY_MAX=10000`. Right motor has +160 compensation for hardware asymmetry.
+Current tuning constants: `KP=30`, `BASE_SPEED=3000`, `PWM_DUTY_MAX=10000`. Right motor has `RIGHT_MOTOR_COMP=160` compensation for hardware asymmetry.
 
 ## Conventions
 
