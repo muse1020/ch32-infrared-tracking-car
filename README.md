@@ -51,7 +51,7 @@ main() while 循环  → error → 差速计算 → PWM 输出
 | PA1 (TIM5_CH2) | PA3 (TIM5_CH4) | PA5/PA7 | PC5/PB1 |
 
 CH32
-├── TIM1 PWM → L298N → 左右电机
+├── TIM5 PWM → L298N → 左右电机
 ├── GPIO → 红外循迹模块
 └── UART → 串口调试
 
