@@ -2,6 +2,12 @@
 
 第十七届全国大学生智能车竞赛项目。基于 CH32V307VCT6（RISC-V, 120MHz），5 路红外传感器 + P 比例控制差速转向。
 
+<div align="center">
+  <img src="Photos-3-001/IMG_20260525_175853.jpg" width="600">
+  <br>
+  <em>小车循迹实拍</em>
+</div>
+
 ## 项目说明
 
 本项目基于逐飞科技 CH32V307 开源库进行开发，主要完成了红外循迹逻辑、电机 PWM 控制以及差速转向部分。`libraries/` 为第三方依赖（已精简至编译所需的最小集合），`project/user/` 为自行编写的核心代码。
@@ -56,6 +62,18 @@ CH32
 └── UART → 串口调试
 
 **调试串口：** UART3 (PB10/PB11), 115200
+
+<div align="center">
+  <img src="Photos-3-001/IMG_20260525_175845.jpg" width="500">
+  <br>
+  <em>正面视角 — 可见传感器模块（底部红色板）和 L298N 驱动板</em>
+</div>
+
+<div align="center">
+  <img src="Photos-3-001/IMG_20260525_175831.jpg" width="500">
+  <br>
+  <em>侧面视角 — 可见整体接线与电池供电</em>
+</div>
 
 ## 目录结构
 
